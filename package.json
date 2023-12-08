@@ -1,0 +1,80 @@
+{
+  "name": "@codedbypaul/ccwc",
+  "version": "0.0.0-development",
+  "description": "",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "del-cli ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json && move-file lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "test": "mocha",
+    "test:coverage": "c8 mocha",
+    "semantic-release": "semantic-release",
+    "prepack": "npm run build"
+  },
+  "release": {
+    "branches": [
+      "+([0-9])?(.{+([0-9]),x}).x",
+      "master",
+      "next",
+      "next-major",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codedbypaul/ccwc.git"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "esm",
+    "cjs",
+    "wc"
+  ],
+  "author": "Paul Hilder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codedbypaul/ccwc/issues"
+  },
+  "homepage": "https://github.com/codedbypaul/ccwc#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "c8": "^8.0.1",
+    "chai": "^4.3.10",
+    "del-cli": "^5.1.0",
+    "mocha": "^10.2.0",
+    "move-file-cli": "^3.0.0",
+    "semantic-release": "^22.0.10",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.3"
+  }
+}
