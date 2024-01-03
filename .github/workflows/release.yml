@@ -1,7 +1,7 @@
 name: Release
 on:
   workflow_run:
-    workflows: ['Snyk Security Check', 'Tests']
+    workflows: ["Snyk Security Check", "Tests"]
     branches: [develop]
     types:
       - completed
@@ -10,6 +10,12 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -18,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
       - name: Install dependencies
         run: npm ci
       - name: Release
