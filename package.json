@@ -27,7 +27,8 @@
     "test": "mocha",
     "test:coverage": "c8 mocha",
     "semantic-release": "semantic-release",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "prepare": "husky install"
   },
   "release": {
     "branches": [
@@ -59,11 +60,18 @@
     "@types/mocha": "^10.0.6",
     "c8": "^8.0.1",
     "chai": "^4.3.10",
+    "cz-conventional-changelog": "^3.3.0",
     "del-cli": "^5.1.0",
     "mocha": "^10.2.0",
     "move-file-cli": "^3.0.0",
     "semantic-release": "^22.0.12",
     "ts-node": "^10.9.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "husky": "^8.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
