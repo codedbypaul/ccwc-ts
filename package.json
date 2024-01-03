@@ -31,18 +31,7 @@
   },
   "release": {
     "branches": [
-      "+([0-9])?(.{+([0-9]),x}).x",
-      "master",
-      "next",
-      "next-major",
-      {
-        "name": "beta",
-        "prerelease": true
-      },
-      {
-        "name": "alpha",
-        "prerelease": true
-      }
+      "develop"
     ]
   },
   "publishConfig": {
@@ -50,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codedbypaul/ccwc.git"
+    "url": "https://github.com/codedbypaul/ccwc-ts.git"
   },
   "keywords": [
     "javascript",
@@ -62,9 +51,9 @@
   "author": "Paul Hilder",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codedbypaul/ccwc/issues"
+    "url": "https://github.com/codedbypaul/ccwc-ts/issues"
   },
-  "homepage": "https://github.com/codedbypaul/ccwc#readme",
+  "homepage": "https://github.com/codedbypaul/ccwc-ts#readme",
   "devDependencies": {
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
