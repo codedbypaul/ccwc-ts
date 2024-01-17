@@ -1,0 +1,73 @@
+{
+  "name": "@codedbypaul/ccwc-ts",
+  "version": "0.0.0",
+  "description": "An implementation of the Unix command wc in Typescript as seen on [Coding Challenges](https://codingchallenges.substack.com/p/coding-challenge-1).",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "scripts": {
+    "clean": "del-cli ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json && move-file lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "test": "mocha",
+    "test:coverage": "c8 mocha",
+    "semantic-release": "semantic-release",
+    "prepack": "npm run build",
+    "prepare": "husky install"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codedbypaul/ccwc-ts.git"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "esm",
+    "cjs",
+    "wc"
+  ],
+  "author": "Paul Hilder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codedbypaul/ccwc-ts/issues"
+  },
+  "homepage": "https://github.com/codedbypaul/ccwc-ts#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.5",
+    "c8": "^9.1.0",
+    "chai": "^5.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "del-cli": "^5.1.0",
+    "husky": "^8.0.3",
+    "mocha": "^10.2.0",
+    "move-file-cli": "^3.0.0",
+    "semantic-release": "^23.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
+}
