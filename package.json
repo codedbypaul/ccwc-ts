@@ -57,7 +57,7 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.11.5",
     "c8": "^9.1.0",
-    "chai": "^5.0.0",
+    "chai": "^4.4.1",
     "cz-conventional-changelog": "^3.3.0",
     "del-cli": "^5.1.0",
     "husky": "^8.0.3",
